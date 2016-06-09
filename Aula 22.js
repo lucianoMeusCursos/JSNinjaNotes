@@ -52,24 +52,29 @@
 		myFunction.apply( obj, arr ); // Battesini 1 2 3
 
 // Prototype
-	// Protótipo dos construtores, a partir dele é possível fazer herança e estender os objetos
-	// Utilizando construtores
-		function MyFunction( name, lastName ){
-			this.fullName = name + ' ' + lastName;
+	// Protótipo dos construtores, a partir dele é possível fazer herança e estender os objetos.
+
+	// Instanciar um objeto, é criar uma cópia de um objeto principal herdando suas propriedades e métodos.
+		var obj = new Object(); // Propriedades e métodos de objeto
+		var obj = new Array(); // Propriedades e métodos de array
+
+	// Utilizando construtores - Usando o new, você está copiando (ao invés de apontar) tudo o que está em Function.prototype para a nova função.
+		function MyFunction( name, lastName ){  // Construtores começam com letra maiúscula
+			this.fullName = name + ' ' + lastName; // fullName é um novo método de MyFunction
 		}
 		var fernando = new MyFunction( 'Fernando', 'Daciuk' );
 		console.log( fernando.fullName ); // Fernando Daciuk
 
 	// Estendendo a função principal utilizando protótipo
-		function MyFunction( name, lastaName ){
-			this.name = name;
-			this.lastName = lastName;
+		function MyFunction( name, lastName ){ // Função construtora
+			this.name = name; // método name
+			this.lastName = lastName; // método lastName
 		}
-		MyFunction.prototype.fullName = function (){
+		MyFunction.prototype.fullName = function (){ // criando método fullName, usando o prototype ele irá herdar os métodos name e lastName
 			return this.name + ' ' + this.lastName;
 		}
 		var fernando = new MyFunction( 'Fernando', 'Daciuk' );
-		console.log( fernando.fullName() );
+		console.log( fernando.fullName() ); // Fernando Daciuk
 
 	// Criando propriedades depois de instanciar o objeto 
 		MyFunction.prototype.age = 30;
@@ -80,7 +85,7 @@
 		console.log( fernando.age ); // 20
 
 		// antes de fazer a alteração ele verifica se existe uma propriedade no objeto, se existir esta vai prevalecer 
-		function MyFunction( name, lastaName ){
+		function MyFunction( name, lastName ){
 			this.name = name;
 			this.lastName = lastName;
 			this.age = 30;
