@@ -108,3 +108,6 @@ Anotações do curso [Javascript Ninja](http://blog.da2k.com.br/curso-javascript
   * __Propriedades e métodos__ de funções.
   * __Prototype__.
   * __Array-like__.
+
+#### Aula 23 - *Sem Anotações*
+  * Debug
