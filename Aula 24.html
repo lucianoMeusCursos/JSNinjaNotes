@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>JS Ninja</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>        
+    <!-- Scripts e Eventos Inline - NÃO É PRA SER USADO -->
+       
+        <a href="javascript:boom()">Boom!</a> <!-- Chama a função boom declarada no script -->
+
+        <a href="javascript:void(0)">Void</a> <!-- O void serve para não retornar nada -->
+
+        <a href="javascript:">Void</a> <!-- Também não retorna nada, usado para previnir que o evento aconteça, equivalente ao preventDefault() -->
+
+        <a href="javascript:" onclick="boom()">onclick</a> <!-- Executa a função a partir do click do usuário -->
+
+    <!-- Eventos  -->
+        <div data-js="div">
+            <a href="#" data-js="link"> Link
+                <span data-js="span">Span</span>
+            </a>
+        </div>
+
+    <!-- Eventos de Formulário -->
+        <input type="text" data-js="input"/>
+        <select data-js="select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <script>
+            function boom() { // Chamada pela tag <a>
+                alert('boom');
+            }
+        </script>
+    </body>
+</html>
