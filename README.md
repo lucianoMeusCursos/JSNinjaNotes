@@ -110,4 +110,11 @@ Anotações do curso [Javascript Ninja](http://blog.da2k.com.br/curso-javascript
   * __Array-like__.
 
 #### Aula 23 - *Sem Anotações*
-  * Debug
+  * __Debug__.
+
+#### Aula 24 - [HTML](Aula 24.html)/[JS](Aula 24.js)
+  * __Eventos Inline__.
+  * Eventos __chamados no javascript__.
+  * __EventListener__.
+  * Parâmetro __useCapture__.
+  * Eventos de __formulário__.
