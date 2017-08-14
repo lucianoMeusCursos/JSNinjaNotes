@@ -35,7 +35,7 @@
             // Element(tags html) = 1
             // Text = 3
             // Comments = 8
-            // Document Fragment = 22
+            // Document Fragment = 11
             
         // nodeValue - Retorna o conteúdo textual dos elementos Text e Comment
             console.log($main.childNodes.nodeValue);
