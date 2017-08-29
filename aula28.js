@@ -68,5 +68,6 @@
                 // se der erro passa o response direto, sem parsear
                 response = ajax.responseText;
             }
+            console.log(response); // manipula o response
         }
     }, false);
