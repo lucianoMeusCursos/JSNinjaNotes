@@ -1,4 +1,4 @@
-// Wrapper Objects
+### Wrapper Objects
 	// Valores primitivos não são objetos, mas possuem propriedades, pois o Javascript cria envoltótios para o tipo, no caso string, usando os construtores, para que você possa acessar algumas propriedades e após o uso ele descarta.
 	var name = 'Clara'; // Converte para um objeto
 
