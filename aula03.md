@@ -40,7 +40,7 @@ var myvar = function(){ return 'variável myvar'; };
 ```
 
 ### Método
-Quando você usa funções como propriedades dentro de um objeto
+É quando você usa funções como propriedades dentro de um objeto
 ```
 pessoa.aniversario = function() {
     pessoa.idade++;

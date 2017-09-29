@@ -30,9 +30,9 @@ for ( i = 0; i < 3; i++ ){
 
 Podem ser declaradas mais de uma variável
 ```
-for ( i = 0, j = 10; i < 3, j < 10 ; i++, j-- ){
-    console.log( i );
-    console.log( j++ );
+for(var i= 10, j = 20; i>= 1, j < 30; i--, j++){
+    console.log('Esse é o valor de i : ', i, 
+                'Esse é o valor de j : ', j)
 }
 ```
 	
