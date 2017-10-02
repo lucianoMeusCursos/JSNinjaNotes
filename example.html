@@ -9,14 +9,25 @@
 <body>
 
     <script type="text/javascript">
-
-    for (var i = 0, j = 10; i <= 3, j >= 1; i++, j--) {
-        console.log('valor i = ', i, 'valor j =', j);
-    }
-    for (var i = 0; i <= 3; i++) {
-        console.log('valor i = ', i, );
+    function MyFunction(name, lastName) { // Função construtora
+        this.name = name; // método name
+        this.lastName = lastName; // método lastName
     }
 
+    MyFunction.prototype.fullName = function () { // criando método fullName, usando o prototype ele irá herdar os métodos name e lastName
+            return this.name + ' ' + this.lastName;
+        }
+
+    var fernando = new MyFunction('Fernando', 'Daciuk');
+    fernando.fullName = function () { // criando método fullName, usando o prototype ele irá herdar os métodos name e lastName
+            return this.name + ' ' + this.lastName;
+        }
+        console.log(fernando.fullName()); // Fernando Daciuk
+
+
+        var almir = new MyFunction('almir', 'Daciuk');
+           
+            console.log(almir.fullName()); // Fernando Daciuk
    
         
     </script>
