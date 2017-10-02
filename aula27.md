@@ -36,7 +36,7 @@ function afterWindowLoaded (){
 window.addEventListener('load', afterWindowLoaded, false);
 ```
 
-###TÉCNICAS NINJA
+### TÉCNICAS NINJA
 
 Copiar Arrays
 ```
