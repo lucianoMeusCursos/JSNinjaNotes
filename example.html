@@ -9,25 +9,25 @@
 <body>
 
     <script type="text/javascript">
-    function MyFunction(name, lastName) { // Função construtora
-        this.name = name; // método name
-        this.lastName = lastName; // método lastName
-    }
+        (function(){
+            'use strict';
+            var scope = 'global scope';
+            
+            function checkScope() {
+                // a variáevel scope dentro da função checkScope sobrescreve a variável scrope global.
+                var scope = 'local scope';
+                
+                function func() {
+                    // a função interna consegue guardar os valores dela e os valores que estão fora
+                    return scope;
+                }
 
-    MyFunction.prototype.fullName = function () { // criando método fullName, usando o prototype ele irá herdar os métodos name e lastName
-            return this.name + ' ' + this.lastName;
-        }
+                return func();
+                
+            }
 
-    var fernando = new MyFunction('Fernando', 'Daciuk');
-    fernando.fullName = function () { // criando método fullName, usando o prototype ele irá herdar os métodos name e lastName
-            return this.name + ' ' + this.lastName;
-        }
-        console.log(fernando.fullName()); // Fernando Daciuk
-
-
-        var almir = new MyFunction('almir', 'Daciuk');
-           
-            console.log(almir.fullName()); // Fernando Daciuk
+            console.log(checkScope()); // local scope
+        })();
    
         
     </script>

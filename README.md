@@ -140,4 +140,4 @@ Anotações do curso [Javascript Ninja](http://blog.da2k.com.br/curso-javascript
   * HTTP status
 
 #### Aula 30 - (aula30.md)
-  
+  * Clousure
