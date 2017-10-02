@@ -84,7 +84,7 @@ console.log( fernando.fullName ); // Fernando Daciuk
 
 ```
 
-## Estendendo a função principal utilizando protótipo
+### Estendendo a função principal utilizando protótipo
 ```
 function MyFunction( name, lastName ){ // Função construtora
     this.name = name; // método name
@@ -120,76 +120,88 @@ MyFunction.prototype.age = 20;
 console.log( fernando.age ); // 30
 ```
 
-	// Array-like para array de verdade
-		// Falso array
-			function myFunction(){
-				console.log( arguments )
-			}
-			myFunction( 1,2,3,4 ); // [1, 2, 3, 4]
+### Array-like para array de verdade
 
-		// array-like
-			function myFunction(){
-				arguments.forEach(function(arg){
-					console.log( arg );
-				});			
-			}
-			myFunction( 1,2,3,4 ); // Erro, pois o arguments não é um array de verdade
+Falso array
+```
+function myFunction(){
+    console.log( arguments )
+}
+myFunction( 1,2,3,4 ); // [1, 2, 3, 4]
+```
 
-			function myFunction(){
-				var arr = [ 1, 2, 3, 4 ];
-				arr.forEach(function(item){
-					console.log( item );
-				});			
-			}
-			myFunction(); // 1 2 3 4
+### Array-like
+```
+function myFunction(){
+    arguments.forEach(function(arg){
+        console.log( arg );
+    });			
+}
+myFunction( 1,2,3,4 ); // Erro, pois o arguments não é um array de verdade
 
-			function myFunction(){
-				var arr = [ 1, 2, 3, 4 ];
-				arr.forEach(function( item ){
-					console.log( this );
-				});			
-			}
-			myFunction(); // o this vai ser undefined pois está sendo iterado pelo array arr
+function myFunction(){
+    var arr = [ 1, 2, 3, 4 ];
+    arr.forEach(function(item){
+        console.log( item );
+    });			
+}
+myFunction(); // 1 2 3 4
+```
+o this vai ser `undefined` pois está sendo iterado pelo array arr
+```
+function myFunction(){
+    var arr = [ 1, 2, 3, 4 ];
+    arr.forEach(function( item ){
+        console.log( this );
+    });			
+}
+myFunction(); // undefined
+```
+segundo parâmetro, é o this dentro do foreach	
+```
+function myFunction(){
+    var arr = [ 1, 2, 3, 4 ];
+    arr.forEach(function( item ){
+        console.log( this );
+    }, arguments);			
+}
+myFunction('a','b','c','d'); // 0: "a", 1: "b", 2: "c", 3: "d"
 
-			function myFunction(){
-				var arr = [ 1, 2, 3, 4 ];
-				arr.forEach(function( item ){
-					console.log( this );
-				}, arguments); // segundo parâmetro, é o this dentro do foreach			
-			}
-			myFunction('a','b','c','d'); // 0: "a", 1: "b", 2: "c", 3: "d"
+function myFunction(){
+    var arr = [ 1, 2, 3, 4 ];
+    arr.forEach(function( item, index ){
+        console.log( this[index] );
+    }, arguments); // segundo parâmetro, é o this dentro do foreach			
+}
+myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4 só retorna os quatro primeiros números pois o array arr só tem 4 elementos
 
-			function myFunction(){
-				var arr = [ 1, 2, 3, 4 ];
-				arr.forEach(function( item, index ){
-					console.log( this[index] );
-				}, arguments); // segundo parâmetro, é o this dentro do foreach			
-			}
-			myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4 só retorna os quatro primeiros números pois o array arr só tem 4 elementos
+function myFunction(){
+    for ( var i = 0; i < arguments.length; i++ ){
+        console.log(arguments[i]);
+    }		
+}
+myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8
+```
 
-			function myFunction(){
-				for ( var i = 0; i < arguments.length; i++ ){
-					console.log(arguments[i]);
-				}		
-			}
-			myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8
+engana o javascript chamando o arguments de array
+```
+function myFunction(){
+    Array.prototype.forEach.call( arguments, function( item, index ){
+        console.log( item );
+    });	
+}
+myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8 
 
-			function myFunction(){
-				Array.prototype.forEach.call( arguments, function( item, index ){
-					console.log( item );
-				});	
-			}
-			myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8 engana o javascript chamando o arguments de array
+function myFunction(){
+    var result = Array.prototype.reduce.call( arguments, function( acumulated, actual, index ){
+        return acumulated + actual;
+    });	
+    console.log( result );
 
-			function myFunction(){
-				var result = Array.prototype.reduce.call( arguments, function( acumulated, actual, index ){
-					return acumulated + actual;
-				});	
-				console.log( result );
+    // Mesma coisa que fazer isso 
 
-				// mesma coisa que fazer isso 
-				arr.reduce(function(acumulated, actual){
-					return acumulated + item;
-				});
-			}
-			myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8 engana o javascript chamando o arguments de array
+    arr.reduce(function(acumulated, actual){
+        return acumulated + item;
+    });
+}
+myFunction(1, 2, 3, 4, 5, 6, 7, 8); // 1, 2, 3, 4, 5, 6, 7, 8 
